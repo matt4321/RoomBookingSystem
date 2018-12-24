@@ -34,16 +34,11 @@ namespace RoomBookingSystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnConnect_Click(object sender, EventArgs e)
-        {
             var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
             var allrooms = databaseFunctions.GetAllRooms(ConnectionString);
             foreach (var room in allrooms)
             {
-                Console.WriteLine("Capacity is {0} and Name is {1}", room.RoomMaxCapacity, room.RoomName);
+                listBox1.Items.Add(room.RoomId + " " + room.RoomName);
             }
         }
 
