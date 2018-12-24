@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
+using RoomBookingSystem.DTOs;
 
 namespace RoomBookingSystem
 {
@@ -56,8 +57,8 @@ namespace RoomBookingSystem
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var lbl = listBox1.SelectedItem.RoomName;
-            lblRoomInfo.Text = (lbl);
+            var roomInfo = listBox1.SelectedItem as Rooms;
+            lblRoomInfo.Text = Convert.ToString(roomInfo.RoomId);
         }
     }
 }
