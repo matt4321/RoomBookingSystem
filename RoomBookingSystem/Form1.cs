@@ -44,10 +44,10 @@ namespace RoomBookingSystem
         {
             var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
             int roomCapacity = Convert.ToInt32(numRoomCapacity.Value);
-            int HasProjector = Convert.ToInt32(chBxProjector.Checked);
+            int hasProjector = Convert.ToInt32(chBxProjector.Checked);
             int HasToiletFacilities = Convert.ToInt32(chBxToiletFacilities.Checked);
             string RoomName = txBxRoomName.Text;
-            databaseFunctions.InsertRoom(ConnectionString, HasProjector, roomCapacity, HasToiletFacilities, RoomName);
+            databaseFunctions.InsertRoom(ConnectionString, hasProjector, roomCapacity, HasToiletFacilities, RoomName);
         }
     }
 }
