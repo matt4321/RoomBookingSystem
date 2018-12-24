@@ -36,10 +36,11 @@ namespace RoomBookingSystem
         {
             var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
             var allrooms = databaseFunctions.GetAllRooms(ConnectionString);
-            foreach (var room in allrooms)
-            {
-                listBox1.Items.Add(room.RoomId + " " + room.RoomName);
-            }
+
+            listBox1.DataSource = allrooms;
+            listBox1.DisplayMember = "RoomName";
+            listBox1.ValueMember = "RoomId";
+            lblRoomInfo.Text = ("Please select a room");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,6 +51,14 @@ namespace RoomBookingSystem
             int hasToiletFacilities = Convert.ToInt32(chBxToiletFacilities.Checked);
             string roomName = txBxRoomName.Text;
             databaseFunctions.InsertRoom(ConnectionString, hasProjector, roomCapacity, hasToiletFacilities, roomName);
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string roomInfo = Convert.ToString(listBox1.SelectedValue);
+            lblRoomInfo.Text = (roomInfo);
+            if (listBox1.SelectedIndex == -1)
+                MessageBox.Show("Please select an Item first!");
         }
     }
 }

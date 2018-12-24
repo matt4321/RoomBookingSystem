@@ -39,6 +39,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lblRoomInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numRoomCapacity)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -156,14 +157,25 @@
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(12, 15);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(306, 276);
+            this.listBox1.Size = new System.Drawing.Size(306, 180);
             this.listBox1.TabIndex = 11;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // lblRoomInfo
+            // 
+            this.lblRoomInfo.AutoSize = true;
+            this.lblRoomInfo.Location = new System.Drawing.Point(12, 202);
+            this.lblRoomInfo.Name = "lblRoomInfo";
+            this.lblRoomInfo.Size = new System.Drawing.Size(140, 17);
+            this.lblRoomInfo.TabIndex = 12;
+            this.lblRoomInfo.Text = "Please select a room";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(711, 359);
+            this.Controls.Add(this.lblRoomInfo);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -174,6 +186,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -189,6 +202,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label lblRoomInfo;
     }
 }
 
