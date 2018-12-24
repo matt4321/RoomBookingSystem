@@ -22,7 +22,7 @@ namespace RoomBookingSystem.DatabaseFunctions
                 var command = new MySqlCommand(queryString, connection);
                 var results = command.ExecuteReader();
                 while (results.Read())
-                    {
+                {
                     var room = new Rooms();
                     room.RoomId = Int32.Parse(results["room_id"].ToString());
                     room.RoomMaxCapacity = Int32.Parse(results["room_max_capacity"].ToString());
@@ -46,7 +46,6 @@ namespace RoomBookingSystem.DatabaseFunctions
             try
             {
                 var queryString = String.Format($"insert into rooms (room_max_capacity, has_projector, has_toilet_facilities, room_name) values ({roomCapacity}, {hasProjector}, {hasToiletFacilities}, '{roomName}')");
-                //var queryString = "insert into rooms (room_max_capacity, has_projector, has_toilet_facilities, room_name) values (" + roomCapacity + ", " + hasProjector + ", " + hasToiletFacilities + ", '" + roomName + "')";
                 connection.Open();
                 var command = new MySqlCommand(queryString, connection);
                 var results = command.ExecuteReader();
