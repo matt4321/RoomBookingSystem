@@ -42,7 +42,7 @@ namespace RoomBookingSystem
             roomsListBox.DisplayMember = "RoomName";
             roomsListBox.ValueMember = "RoomId";
             roomsListBox.DataSource = allrooms;
-            lblRoomInfo.Text = ("Please select a room");
+            lblRoomInfo.Text = "Please select a room";
         }
 
         private void button1_Click(object sender, EventArgs e)
