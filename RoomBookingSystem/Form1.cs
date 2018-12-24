@@ -56,11 +56,8 @@ namespace RoomBookingSystem
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int roomId = Convert.ToInt32(listBox1.SelectedValue);
-                var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
-                var singleroom = databaseFunctions.GetSingleRoom(ConnectionString, roomId);
-                lblRoomInfo.Text = Convert.ToString(singleroom.RoomId);
-                Console.WriteLine(singleroom.RoomName);
+            var lbl = listBox1.SelectedItem.RoomName;
+            lblRoomInfo.Text = (lbl);
         }
     }
 }
