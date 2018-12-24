@@ -60,5 +60,11 @@ namespace RoomBookingSystem
             var roomInfo = roomsListBox.SelectedItem as Rooms;
             lblRoomInfo.Text = Convert.ToString(roomInfo.RoomId);
         }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            var adminForm = new AdminPanel();
+            adminForm.Show();
+        }
     }
 }

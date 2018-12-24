@@ -56,5 +56,10 @@ namespace RoomBookingSystem.DatabaseFunctions
                 throw new Exception();
             }
         }
+
+        public void AddUser(string connectionString, string username, string password)
+        {
+
+        }
     }
 }
