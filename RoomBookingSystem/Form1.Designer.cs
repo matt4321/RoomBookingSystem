@@ -38,7 +38,7 @@
             this.txBxRoomName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.roomsListBox = new System.Windows.Forms.ListBox();
             this.lblRoomInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numRoomCapacity)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -151,15 +151,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add a Room";
             // 
-            // listBox1
+            // roomsListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(12, 15);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(306, 180);
-            this.listBox1.TabIndex = 11;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.roomsListBox.FormattingEnabled = true;
+            this.roomsListBox.ItemHeight = 16;
+            this.roomsListBox.Location = new System.Drawing.Point(12, 15);
+            this.roomsListBox.Name = "roomsListBox";
+            this.roomsListBox.Size = new System.Drawing.Size(306, 180);
+            this.roomsListBox.TabIndex = 11;
+            this.roomsListBox.SelectedIndexChanged += new System.EventHandler(this.roomsListBox_SelectedIndexChanged);
             // 
             // lblRoomInfo
             // 
@@ -176,7 +176,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(711, 359);
             this.Controls.Add(this.lblRoomInfo);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.roomsListBox);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
@@ -201,7 +201,7 @@
         private System.Windows.Forms.TextBox txBxRoomName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox roomsListBox;
         private System.Windows.Forms.Label lblRoomInfo;
     }
 }

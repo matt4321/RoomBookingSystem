@@ -39,9 +39,9 @@ namespace RoomBookingSystem
             var allrooms = databaseFunctions.GetAllRooms(ConnectionString);
 
 
-            listBox1.DisplayMember = "RoomName";
-            listBox1.ValueMember = "RoomId";
-            listBox1.DataSource = allrooms;
+            roomsListBox.DisplayMember = "RoomName";
+            roomsListBox.ValueMember = "RoomId";
+            roomsListBox.DataSource = allrooms;
             lblRoomInfo.Text = ("Please select a room");
         }
 
@@ -55,9 +55,9 @@ namespace RoomBookingSystem
             databaseFunctions.InsertRoom(ConnectionString, hasProjector, roomCapacity, hasToiletFacilities, roomName);
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void roomsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var roomInfo = listBox1.SelectedItem as Rooms;
+            var roomInfo = roomsListBox.SelectedItem as Rooms;
             lblRoomInfo.Text = Convert.ToString(roomInfo.RoomId);
         }
     }
