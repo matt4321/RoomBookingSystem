@@ -41,6 +41,10 @@ namespace RoomBookingSystem
         {
             var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
             var allrooms = databaseFunctions.GetAllRooms(ConnectionString);
+            foreach (var room in allrooms)
+            {
+                Console.WriteLine("Capacity is {0} and Name is {1}", room.RoomMaxCapacity, room.RoomName);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

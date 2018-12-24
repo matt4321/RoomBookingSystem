@@ -16,13 +16,14 @@ namespace RoomBookingSystem.DatabaseFunctions
             using (var connection = new MySqlConnection(connectionString))
             try
             {
-                var room = new Rooms();
+
                 var queryString = "select * from rooms";
                 connection.Open();
                 var command = new MySqlCommand(queryString, connection);
                 var results = command.ExecuteReader();
                 while (results.Read())
-                {
+                    {
+                    var room = new Rooms();
                     room.RoomId = Int32.Parse(results["room_id"].ToString());
                     room.RoomMaxCapacity = Int32.Parse(results["room_max_capacity"].ToString());
                     room.HasProjector = Boolean.Parse(results["has_projector"].ToString());
