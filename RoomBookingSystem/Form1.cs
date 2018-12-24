@@ -27,7 +27,7 @@ namespace RoomBookingSystem
             var password = file[3];
             var port = file[4];
 
-            ConnectionString = String.Format("server={0};port={1};user id={2}; password={3}; database={4};", server, port, user, password, database);
+            ConnectionString = String.Format($"server={server};port={port};user id={user}; password={password}; database={database};");
         }
 
         public string ConnectionString { get; set; }
