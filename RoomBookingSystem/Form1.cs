@@ -46,8 +46,8 @@ namespace RoomBookingSystem
             int roomCapacity = Convert.ToInt32(numRoomCapacity.Value);
             int hasProjector = Convert.ToInt32(chBxProjector.Checked);
             int hasToiletFacilities = Convert.ToInt32(chBxToiletFacilities.Checked);
-            string RoomName = txBxRoomName.Text;
-            databaseFunctions.InsertRoom(ConnectionString, hasProjector, roomCapacity, hasToiletFacilities, RoomName);
+            string roomName = txBxRoomName.Text;
+            databaseFunctions.InsertRoom(ConnectionString, hasProjector, roomCapacity, hasToiletFacilities, roomName);
         }
     }
 }
