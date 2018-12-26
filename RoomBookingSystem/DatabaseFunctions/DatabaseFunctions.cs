@@ -48,7 +48,7 @@ namespace RoomBookingSystem.DatabaseFunctions
                 var queryString = String.Format($"insert into rooms (room_max_capacity, has_projector, has_toilet_facilities, room_name) values ({roomCapacity}, {hasProjector}, {hasToiletFacilities}, '{roomName}')");
                 connection.Open();
                 var command = new MySqlCommand(queryString, connection);
-                var results = command.ExecuteReader();
+                command.ExecuteReader();
                 connection.Close();
             }
             catch
