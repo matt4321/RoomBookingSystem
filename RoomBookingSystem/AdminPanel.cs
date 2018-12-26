@@ -35,6 +35,8 @@ namespace RoomBookingSystem
             var hashBytes = hashedPassword.ToArray();
             var hashedPasswordToStore = Convert.ToBase64String(hashBytes);
             var usernameToStore = txtAddUsername.Text;
+            var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
+            databaseFunctions.AddUser(ConnectionString, usernameToStore, hashedPasswordToStore);
         }
     }
 }

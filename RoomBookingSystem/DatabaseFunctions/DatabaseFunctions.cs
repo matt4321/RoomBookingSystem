@@ -59,7 +59,19 @@ namespace RoomBookingSystem.DatabaseFunctions
 
         public void AddUser(string connectionString, string username, string password)
         {
-
+            using (var connection = new MySqlConnection(connectionString))
+            try
+            {
+                var queryString = String.Format($"insert into Users (Username, Password) values ('{username}', '{password}')");
+                connection.Open();
+                var command = new MySqlCommand(queryString, connection);
+                command.ExecuteReader();
+                connection.Close();
+            }
+            catch
+            {
+                throw new Exception();
+            }
         }
     }
 }
