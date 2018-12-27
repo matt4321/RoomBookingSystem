@@ -38,7 +38,6 @@ namespace RoomBookingSystem
             var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
             var allrooms = databaseFunctions.GetAllRooms(ConnectionString);
 
-
             roomsListBox.DisplayMember = "RoomName";
             roomsListBox.ValueMember = "RoomId";
             roomsListBox.DataSource = allrooms;
@@ -53,18 +52,38 @@ namespace RoomBookingSystem
             int hasToiletFacilities = Convert.ToInt32(chBxToiletFacilities.Checked);
             string roomName = txBxRoomName.Text;
             databaseFunctions.InsertRoom(ConnectionString, hasProjector, roomCapacity, hasToiletFacilities, roomName);
+            var allrooms = databaseFunctions.GetAllRooms(ConnectionString);
+
+            roomsListBox.DisplayMember = "RoomName";
+            roomsListBox.ValueMember = "RoomId";
+            roomsListBox.DataSource = allrooms;
         }
 
         private void roomsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var roomInfo = roomsListBox.SelectedItem as Rooms;
             lblRoomInfo.Text = Convert.ToString(roomInfo.RoomId);
+            lblRoomInfo.Text = Convert.ToString(roomInfo.RoomName);
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
             var adminForm = new AdminPanel();
             adminForm.Show();
+        }
+
+        private void btnRemoveRoom_Click(object sender, EventArgs e)
+        {
+            var roomInfo = roomsListBox.SelectedItem as Rooms;
+            var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
+            int roomId = roomInfo.RoomId;
+            databaseFunctions.RemoveRoom(ConnectionString, roomId);
+            MessageBox.Show(roomInfo.RoomName + " Removed");
+            var allrooms = databaseFunctions.GetAllRooms(ConnectionString);
+
+            roomsListBox.DisplayMember = "RoomName";
+            roomsListBox.ValueMember = "RoomId";
+            roomsListBox.DataSource = allrooms;
         }
     }
 }

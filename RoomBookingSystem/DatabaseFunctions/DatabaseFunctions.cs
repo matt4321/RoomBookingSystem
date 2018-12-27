@@ -17,7 +17,7 @@ namespace RoomBookingSystem.DatabaseFunctions
             try
             {
 
-                var queryString = "select * from rooms";
+                var queryString = "select * from rooms order by room_name ASC";
                 connection.Open();
                 var command = new MySqlCommand(queryString, connection);
                 var results = command.ExecuteReader();
@@ -72,6 +72,23 @@ namespace RoomBookingSystem.DatabaseFunctions
             {
                 throw new Exception();
             }
+        }
+
+        public void RemoveRoom(string connectionString, int roomid)
+        {
+            using (var connection = new MySqlConnection(connectionString))
+                try
+                {
+                    var queryString = String.Format($"delete from rooms where room_id = {roomid}");
+                    connection.Open();
+                    var command = new MySqlCommand(queryString, connection);
+                    command.ExecuteReader();
+                    connection.Close();
+                }
+                catch
+                {
+                    throw new Exception();
+                }
         }
     }
 }

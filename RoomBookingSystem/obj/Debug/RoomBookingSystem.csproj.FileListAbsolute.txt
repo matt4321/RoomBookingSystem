@@ -28,3 +28,4 @@ C:\Users\Daniel\Source\Repos\RoomBookingSystem\RoomBookingSystem\obj\Debug\RoomB
 C:\Users\Daniel\Source\Repos\RoomBookingSystem\RoomBookingSystem\obj\Debug\RoomBookingSystem.csproj.CopyComplete
 C:\Users\Daniel\Source\Repos\RoomBookingSystem\RoomBookingSystem\obj\Debug\RoomBookingSystem.exe
 C:\Users\Daniel\Source\Repos\RoomBookingSystem\RoomBookingSystem\obj\Debug\RoomBookingSystem.pdb
+C:\Users\Daniel\Source\Repos\RoomBookingSystem\RoomBookingSystem\obj\Debug\RoomBookingSystem.AdminPanel.resources
