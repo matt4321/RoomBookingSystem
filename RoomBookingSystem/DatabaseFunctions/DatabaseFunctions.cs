@@ -45,7 +45,7 @@ namespace RoomBookingSystem.DatabaseFunctions
             try
             {
                 var queryString = String.Format($"insert into rooms (room_max_capacity, has_projector, has_toilet_facilities, room_name) values ({roomCapacity}, {hasProjector}, {hasToiletFacilities}, '{roomName}')");
-                SendSqlCommand(connectionString, queryString);
+                SendSqlCommandWithNoReturnResults(connectionString, queryString);
             }
             catch
             {
@@ -58,7 +58,7 @@ namespace RoomBookingSystem.DatabaseFunctions
             try
             {
                 var queryString = String.Format($"insert into Users (Username, Password) values ('{username}', '{password}')");
-                SendSqlCommand(connectionString, queryString);
+                SendSqlCommandWithNoReturnResults(connectionString, queryString);
             }
             catch
             {
@@ -71,7 +71,7 @@ namespace RoomBookingSystem.DatabaseFunctions
             try
             {
                 var queryString = String.Format($"delete from rooms where room_id = {roomid}");
-                SendSqlCommand(connectionString, queryString);
+                SendSqlCommandWithNoReturnResults(connectionString, queryString);
             }
             catch
             {
@@ -79,7 +79,7 @@ namespace RoomBookingSystem.DatabaseFunctions
             }
         }
 
-        private static void SendSqlCommand(string connectionString, string queryString)
+        private static void SendSqlCommandWithNoReturnResults(string connectionString, string queryString)
         {
             using (var connection = new MySqlConnection(connectionString))
             {
