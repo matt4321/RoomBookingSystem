@@ -16,11 +16,8 @@ namespace RoomBookingSystem.DatabaseFunctions
             using (var connection = new MySqlConnection(connectionString))
             try
             {
-
                 var queryString = "select * from rooms order by room_name ASC";
-                connection.Open();
-                var command = new MySqlCommand(queryString, connection);
-                var results = command.ExecuteReader();
+                var results = SendSqlCommandWithResultsReturned(connection, queryString);
                 while (results.Read())
                 {
                     var room = new Rooms();
@@ -38,6 +35,14 @@ namespace RoomBookingSystem.DatabaseFunctions
                 throw new Exception();
             }
             return allRooms;
+        }
+
+        private static MySqlDataReader SendSqlCommandWithResultsReturned(MySqlConnection connection, string queryString)
+        {
+            connection.Open();
+            var command = new MySqlCommand(queryString, connection);
+            var results = command.ExecuteReader();
+            return results;
         }
 
         public void InsertRoom(string connectionString, int hasProjector, int roomCapacity, int hasToiletFacilities, string roomName)
