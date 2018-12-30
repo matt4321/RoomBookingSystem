@@ -20,12 +20,14 @@ namespace RoomBookingSystem.DatabaseFunctions
                 var results = SendSqlCommandWithResultsReturned(connection, queryString);
                 while (results.Read())
                 {
-                    var room = new Rooms();
-                    room.RoomId = Int32.Parse(results["room_id"].ToString());
-                    room.RoomMaxCapacity = Int32.Parse(results["room_max_capacity"].ToString());
-                    room.HasProjector = Boolean.Parse(results["has_projector"].ToString());
-                    room.HasToilet = Boolean.Parse(results["has_toilet_facilities"].ToString());
-                    room.RoomName = results["room_name"].ToString();
+                    var room = new Rooms
+                    {
+                        RoomId = Int32.Parse(results["room_id"].ToString()),
+                        RoomMaxCapacity = Int32.Parse(results["room_max_capacity"].ToString()),
+                        HasProjector = Boolean.Parse(results["has_projector"].ToString()),
+                        HasToilet = Boolean.Parse(results["has_toilet_facilities"].ToString()),
+                        RoomName = results["room_name"].ToString()
+                    };
                     allRooms.Add(room);
                 }
                 connection.Close();
