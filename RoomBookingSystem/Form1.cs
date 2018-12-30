@@ -19,16 +19,9 @@ namespace RoomBookingSystem
         public Form1()
         {
             InitializeComponent();
-
-            string[] file = System.IO.File.ReadAllLines(@"C:\tmp\info.txt");
-
-            var server = file[0];
-            var database = file[1];
-            var user = file[2];
-            var password = file[3];
-            var port = file[4];
-
-            ConnectionString = String.Format($"server={server};port={port};user id={user}; password={password}; database={database};");
+            var initialiseConnection = new InitialiseConnection();
+            var connectionString = initialiseConnection.InitialiseConnectionInfo();
+            ConnectionString = connectionString;
         }
 
         public string ConnectionString { get; set; }
