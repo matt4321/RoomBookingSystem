@@ -30,7 +30,6 @@ namespace RoomBookingSystem
         {
             var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
             var allrooms = databaseFunctions.GetAllRooms(ConnectionString);
-
             roomsListBox.DisplayMember = "RoomName";
             roomsListBox.ValueMember = "RoomId";
             roomsListBox.DataSource = allrooms;
@@ -46,7 +45,6 @@ namespace RoomBookingSystem
             string roomName = txBxRoomName.Text;
             databaseFunctions.InsertRoom(ConnectionString, hasProjector, roomCapacity, hasToiletFacilities, roomName);
             var allrooms = databaseFunctions.GetAllRooms(ConnectionString);
-
             roomsListBox.DisplayMember = "RoomName";
             roomsListBox.ValueMember = "RoomId";
             roomsListBox.DataSource = allrooms;
@@ -73,7 +71,6 @@ namespace RoomBookingSystem
             databaseFunctions.RemoveRoom(ConnectionString, roomId);
             MessageBox.Show(roomInfo.RoomName + " Removed");
             var allrooms = databaseFunctions.GetAllRooms(ConnectionString);
-
             roomsListBox.DisplayMember = "RoomName";
             roomsListBox.ValueMember = "RoomId";
             roomsListBox.DataSource = allrooms;
