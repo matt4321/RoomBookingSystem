@@ -42,14 +42,10 @@ namespace RoomBookingSystem.DatabaseFunctions
 
         public void InsertRoom(string connectionString, int hasProjector, int roomCapacity, int hasToiletFacilities, string roomName)
         {
-            using (var connection = new MySqlConnection(connectionString))
             try
             {
                 var queryString = String.Format($"insert into rooms (room_max_capacity, has_projector, has_toilet_facilities, room_name) values ({roomCapacity}, {hasProjector}, {hasToiletFacilities}, '{roomName}')");
-                connection.Open();
-                var command = new MySqlCommand(queryString, connection);
-                command.ExecuteReader();
-                connection.Close();
+                SendSqlCommand(connectionString, queryString);
             }
             catch
             {
@@ -59,14 +55,10 @@ namespace RoomBookingSystem.DatabaseFunctions
 
         public void AddUser(string connectionString, string username, string password)
         {
-            using (var connection = new MySqlConnection(connectionString))
             try
             {
                 var queryString = String.Format($"insert into Users (Username, Password) values ('{username}', '{password}')");
-                connection.Open();
-                var command = new MySqlCommand(queryString, connection);
-                command.ExecuteReader();
-                connection.Close();
+                SendSqlCommand(connectionString, queryString);
             }
             catch
             {
@@ -76,19 +68,26 @@ namespace RoomBookingSystem.DatabaseFunctions
 
         public void RemoveRoom(string connectionString, int roomid)
         {
+            try
+            {
+                var queryString = String.Format($"delete from rooms where room_id = {roomid}");
+                SendSqlCommand(connectionString, queryString);
+            }
+            catch
+            {
+                throw new Exception();
+            }
+        }
+
+        private static void SendSqlCommand(string connectionString, string queryString)
+        {
             using (var connection = new MySqlConnection(connectionString))
-                try
-                {
-                    var queryString = String.Format($"delete from rooms where room_id = {roomid}");
-                    connection.Open();
-                    var command = new MySqlCommand(queryString, connection);
-                    command.ExecuteReader();
-                    connection.Close();
-                }
-                catch
-                {
-                    throw new Exception();
-                }
+            {
+                connection.Open();
+                var command = new MySqlCommand(queryString, connection);
+                command.ExecuteReader();
+                connection.Close();
+            }
         }
     }
 }
