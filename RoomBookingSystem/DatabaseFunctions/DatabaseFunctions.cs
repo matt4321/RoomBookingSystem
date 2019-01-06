@@ -39,6 +39,32 @@ namespace RoomBookingSystem.DatabaseFunctions
             return allRooms;
         }
 
+        public List<Users> GetAllUsers(string connectionString)
+        {
+            var allUsers = new List<Users>();
+            using (var connection = new MySqlConnection(connectionString))
+                try
+                {
+                    var queryString = "select * from Users order by Username ASC";
+                    var results = SendSqlCommandWithResultsReturned(connection, queryString);
+                    while (results.Read())
+                    {
+                        var user = new Users
+                        {
+                            Username = results["Username"].ToString(),
+                            Password = results["Password"].ToString(),
+                        };
+                        allUsers.Add(user);
+                    }
+                    connection.Close();
+                }
+                catch
+                {
+                    throw new Exception();
+                }
+            return allUsers;
+        }
+
         private static MySqlDataReader SendSqlCommandWithResultsReturned(MySqlConnection connection, string queryString)
         {
             connection.Open();

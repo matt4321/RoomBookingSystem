@@ -19,6 +19,7 @@ namespace RoomBookingSystem
             var initialiseConnection = new InitialiseConnection();
             var connectionString = initialiseConnection.InitialiseConnectionInfo();
             ConnectionString = connectionString;
+            GetAllUsers();
         }
         public string ConnectionString { get; set; }
 
@@ -30,6 +31,18 @@ namespace RoomBookingSystem
             var usernameToStore = txtAddUsername.Text;
             var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
             databaseFunctions.AddUser(ConnectionString, usernameToStore, hashedPasswordToStore);
+        }
+
+        private void GetAllUsers()
+        {
+            var databaseFunctions = new DatabaseFunctions.DatabaseFunctions();
+            var listOfUsers = databaseFunctions.GetAllUsers(ConnectionString);
+            foreach (var user in listOfUsers)
+            {
+                string[] row = {user.Username, user.Password};
+                var listViewItem = new ListViewItem(row);
+                lstUsers.Items.Add(listViewItem);
+            }
         }
     }
 }
